@@ -5,7 +5,6 @@ using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
-using UnityEngine;
 
 namespace DOT.Systems
 {
@@ -28,12 +27,9 @@ namespace DOT.Systems
             var levelEntity = SystemAPI.GetSingletonEntity<LevelData>();
             var level = SystemAPI.GetAspect<LevelAspect>(levelEntity);
             var spawnPoints = level.Data.CharacterSpawnPoints;
-            
-            var ecb = new EntityCommandBuffer(Allocator.Temp);
-            // var numberOfCharactersToSpawn = level.MaxCharacterCount - characters.Count();
 
-            Debug.Log("[DEBUG] Spawning characters...");
-            
+            var ecb = new EntityCommandBuffer(Allocator.Temp);
+
             for (int i = 0; i < spawnPoints.Value.Array.Length; i++)
             {
                 var spawnPoint = spawnPoints.Value.Array[i];

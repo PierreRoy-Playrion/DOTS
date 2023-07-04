@@ -4,7 +4,6 @@ using DOTS.Components;
 using Unity.Burst;
 using Unity.Collections;
 using Unity.Entities;
-using UnityEngine;
 
 namespace DOT.Systems
 {
@@ -31,7 +30,6 @@ namespace DOT.Systems
             using var blobBuilder = new BlobBuilder(Allocator.Temp);
             ref var spawnPointBlob = ref blobBuilder.ConstructRoot<CharacterSpawnPointBlob>();
             var spawnPointArray = blobBuilder.Allocate(ref spawnPointBlob.Array, level.MaxCharacterSpawnPointCount);
-            Debug.Log("[DEBUG] Blob Asset created!");
 
             var ecb = new EntityCommandBuffer(Allocator.Temp);
             
@@ -47,7 +45,6 @@ namespace DOT.Systems
             var levelData = SystemAPI.GetSingleton<LevelData>();
             levelData.CharacterSpawnPoints = blobBuilder.CreateBlobAssetReference<CharacterSpawnPointBlob>(Allocator.Persistent);
             SystemAPI.SetSingleton(levelData);
-            Debug.Log("[DEBUG] Blob Asset assigned!");
             
             ecb.Playback(state.EntityManager);
         }

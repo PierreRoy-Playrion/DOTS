@@ -1,4 +1,3 @@
-using DOTS.Blobs;
 using DOTS.Components;
 using Unity.Entities;
 using Unity.Mathematics;
@@ -20,7 +19,6 @@ namespace DOTS.Aspects
 
         public LevelData Data => _data.ValueRW;
         
-        public int MaxCharacterCount => _properties.ValueRO.MaxCharacterCount;
         public int MaxCharacterSpawnPointCount => _properties.ValueRO.MaxCharacterSpawnPointCount;
         public Entity SpawnPointPrefab => _properties.ValueRO.SpawnPointPrefab;
         public Entity CharacterPrefab => _properties.ValueRO.CharacterPrefab;

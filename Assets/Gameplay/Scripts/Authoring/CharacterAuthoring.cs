@@ -1,4 +1,5 @@
 using DOTS.Components;
+using DOTS.Components.Tags;
 using Unity.Entities;
 using UnityEngine;
 
@@ -14,7 +15,13 @@ namespace DOTS.Authoring
         public override void Bake(CharacterAuthoring authoring)
         {
             var entity = GetEntity(TransformUsageFlags.Dynamic);
-            AddComponent(entity, new SpeedData { Value = authoring.Speed });
+            
+            AddComponent(entity, new SpeedData
+            {
+                Value = authoring.Speed
+            });
+
+            AddComponent<PlayerControlledTag>(entity);
         }
     }
 }
