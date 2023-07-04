@@ -7,9 +7,11 @@ namespace DOTS.Authoring
 {
     public class LevelAuthoring : MonoBehaviour
     {
-        public int Dimensions;
+        public Vector2 Dimensions;
         public int MaxCharacterCount;
+        public int MaxCharacterSpawnPointCount;
         public GameObject CharacterPrefab;
+        public GameObject SpawnPointPrefab;
         public uint RandomSeed;
     }
     
@@ -23,13 +25,18 @@ namespace DOTS.Authoring
             {
                 Dimensions = authoring.Dimensions,
                 MaxCharacterCount = authoring.MaxCharacterCount,
-                CharacterPrefab = GetEntity(authoring.CharacterPrefab, TransformUsageFlags.Dynamic) 
+                MaxCharacterSpawnPointCount = authoring.MaxCharacterSpawnPointCount,
+                CharacterPrefab = GetEntity(authoring.CharacterPrefab, TransformUsageFlags.Dynamic), 
+                SpawnPointPrefab = GetEntity(authoring.SpawnPointPrefab, TransformUsageFlags.WorldSpace) 
             });
+
             
             AddComponent(entity, new LevelRandom
             {
                 Value = Random.CreateFromIndex(authoring.RandomSeed)
             });
+            
+            AddComponent<LevelData>(entity);
         }
     }
 }
