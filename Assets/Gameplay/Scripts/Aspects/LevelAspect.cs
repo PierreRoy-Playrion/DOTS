@@ -18,6 +18,7 @@ namespace DOTS.Aspects
         private readonly RefRW<LevelData> _data;
 
         public LevelData Data => _data.ValueRW;
+        public Random Random => _random.ValueRO.Value;
         
         public int MaxCharacterSpawnPointCount => _properties.ValueRO.MaxCharacterSpawnPointCount;
         public Entity SpawnPointPrefab => _properties.ValueRO.SpawnPointPrefab;

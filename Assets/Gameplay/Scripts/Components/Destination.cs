@@ -5,6 +5,7 @@ namespace DOTS.Components
 {
     public struct Destination : IComponentData
     {
-        public float3 Value;
+        public bool IsValid;
+        public float3 Position;
     }
 }

@@ -30,7 +30,6 @@ namespace DOTS.Authoring
                 SpawnPointPrefab = GetEntity(authoring.SpawnPointPrefab, TransformUsageFlags.WorldSpace) 
             });
 
-            
             AddComponent(entity, new LevelRandom
             {
                 Value = Random.CreateFromIndex(authoring.RandomSeed)

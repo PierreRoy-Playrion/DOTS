@@ -1,13 +1,15 @@
 using DOTS.Components;
 using DOTS.Components.Tags;
 using Unity.Entities;
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace DOTS.Authoring
 {
     public class CharacterAuthoring : MonoBehaviour
     {
-        public float Speed = 4;
+        public float MinSpeed = 2;
+        public float MaxSpeed = 4;
     }
 
     public class CharacterBaker : Baker<CharacterAuthoring>
@@ -16,11 +18,18 @@ namespace DOTS.Authoring
         {
             var entity = GetEntity(TransformUsageFlags.Dynamic);
             
-            AddComponent(entity, new SpeedData
+            AddComponent(entity, new RandomSpeed
             {
-                Value = authoring.Speed
+               MinSpeed = authoring.MinSpeed,
+               MaxSpeed = authoring.MaxSpeed
             });
 
+            AddComponent(entity, new Destination
+            {
+                Position = float3.zero,
+                IsValid = false
+            });
+            
             AddComponent<PlayerControlledTag>(entity);
         }
     }

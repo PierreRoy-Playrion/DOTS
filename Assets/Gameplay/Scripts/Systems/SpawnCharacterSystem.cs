@@ -46,10 +46,5 @@ namespace DOT.Systems
             ecb.Playback(state.EntityManager);
             ecb.Dispose();
         }
-        
-        [BurstCompile]
-        public void OnDestroy(ref SystemState state)
-        {
-        }
     }
 }
